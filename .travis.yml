@@ -1,24 +1,37 @@
 language: r
+
 os:
 - linux
 - osx
+
 r:
 - release
 - devel
+
 sudo: false
 cache: packages
+
 notifications:
   email:
     on_success: change
     on_failure: change
+
 after_script: "./after.sh"
+
 deploy:
-  skip_cleanup: true
-  provider: releases
-  api_key:
-    secure: UZmSeHq5yw8lra8cQJyCg/l3NxsnSpsT+poQJQZkYL0t6unuX8CU0sRFMHmFS/t3mt30sZqylL+E5j5Bytx/GoWCwaLqF+dcyUsmnCf0CYkDo+OADSw+6YoALPytzKB38He5Oh0NT3KmrD4G4C/Un0g7YEqeVqUFEhdtJBU3g/ngSbLwcJMBYpUIkRBary6dLu5sND7ciNUUD1Xjq0L5WQskuynUO1e8A1+MGuSVJN2ZdieRy0pb/V9WR/I38bwA4bQAGpboDhWLsedI52Pe6EcztqyNiEBUF1uSAeIkXImRwCVUKTReCd9j2BBufzTPGuJWVBeuByc7BKrtsSwFA0i4eVGTFOiEb/D+JIUugwAa/dJDEne7fggdQBKziMx5qhposp7uLS803CFtRr7oIW05r69zejcyz35LGMWKEr03aaVNZtNZv5BqJ92m4JmRlru4NE3hOBWZU78cJm6VnKRIi2ErxIYCgWsPFt4IIDQihVd5IbplZpbE4UGrP3z+uPL5Lt0b+CWbhH/QBjriP3x+pLqsA+OEJrzaz7a9yZP1eL1YvNhMWese20bQmwi59O6N5Y1zPt+z0e6B3Woel0aR7icgBcqhQdDtJCjZ5ccxjbelKq1yUQOXGrk+dpz3vr18cX4cETHl5YxMEvumlqCxA1UdADSbd9OQQiz50d0=
-  file:
-    - "$PKG_TARBALL"
-    - "travispkg_1.0-0.tgz"
-  on:
-    repo: mbojan/travispkg
+  - provider: releases
+    skip_cleanup: true
+    api_key:
+      secure: UZmSeHq5yw8lra8cQJyCg/l3NxsnSpsT+poQJQZkYL0t6unuX8CU0sRFMHmFS/t3mt30sZqylL+E5j5Bytx/GoWCwaLqF+dcyUsmnCf0CYkDo+OADSw+6YoALPytzKB38He5Oh0NT3KmrD4G4C/Un0g7YEqeVqUFEhdtJBU3g/ngSbLwcJMBYpUIkRBary6dLu5sND7ciNUUD1Xjq0L5WQskuynUO1e8A1+MGuSVJN2ZdieRy0pb/V9WR/I38bwA4bQAGpboDhWLsedI52Pe6EcztqyNiEBUF1uSAeIkXImRwCVUKTReCd9j2BBufzTPGuJWVBeuByc7BKrtsSwFA0i4eVGTFOiEb/D+JIUugwAa/dJDEne7fggdQBKziMx5qhposp7uLS803CFtRr7oIW05r69zejcyz35LGMWKEr03aaVNZtNZv5BqJ92m4JmRlru4NE3hOBWZU78cJm6VnKRIi2ErxIYCgWsPFt4IIDQihVd5IbplZpbE4UGrP3z+uPL5Lt0b+CWbhH/QBjriP3x+pLqsA+OEJrzaz7a9yZP1eL1YvNhMWese20bQmwi59O6N5Y1zPt+z0e6B3Woel0aR7icgBcqhQdDtJCjZ5ccxjbelKq1yUQOXGrk+dpz3vr18cX4cETHl5YxMEvumlqCxA1UdADSbd9OQQiz50d0=
+    file: "$PKG_TARBALL"
+    on:
+      repo: mbojan/travispkg
+      condition: $TRAVIS_OS_NAME = linux
+  - provider: releases
+    skip_cleanup: true
+    api_key:
+      secure: UZmSeHq5yw8lra8cQJyCg/l3NxsnSpsT+poQJQZkYL0t6unuX8CU0sRFMHmFS/t3mt30sZqylL+E5j5Bytx/GoWCwaLqF+dcyUsmnCf0CYkDo+OADSw+6YoALPytzKB38He5Oh0NT3KmrD4G4C/Un0g7YEqeVqUFEhdtJBU3g/ngSbLwcJMBYpUIkRBary6dLu5sND7ciNUUD1Xjq0L5WQskuynUO1e8A1+MGuSVJN2ZdieRy0pb/V9WR/I38bwA4bQAGpboDhWLsedI52Pe6EcztqyNiEBUF1uSAeIkXImRwCVUKTReCd9j2BBufzTPGuJWVBeuByc7BKrtsSwFA0i4eVGTFOiEb/D+JIUugwAa/dJDEne7fggdQBKziMx5qhposp7uLS803CFtRr7oIW05r69zejcyz35LGMWKEr03aaVNZtNZv5BqJ92m4JmRlru4NE3hOBWZU78cJm6VnKRIi2ErxIYCgWsPFt4IIDQihVd5IbplZpbE4UGrP3z+uPL5Lt0b+CWbhH/QBjriP3x+pLqsA+OEJrzaz7a9yZP1eL1YvNhMWese20bQmwi59O6N5Y1zPt+z0e6B3Woel0aR7icgBcqhQdDtJCjZ5ccxjbelKq1yUQOXGrk+dpz3vr18cX4cETHl5YxMEvumlqCxA1UdADSbd9OQQiz50d0=
+    file: "travispkg_1.0-0.tgz"
+    on:
+      repo: mbojan/travispkg
+      condition: $TRAVIS_OS_NAME = osx
