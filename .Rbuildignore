@@ -2,3 +2,4 @@
 ^\.Rproj\.user$
 ^\.travis\.yml$
 ^after\.sh$
+^\.travis\.win\.install\.sh$
