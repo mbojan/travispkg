@@ -23,6 +23,7 @@ matrix:
     after_success:
     - R.exe CMD INSTALL --build $PKG_TARBALL
     - Rscript.exe -e 'install.packages("drat")'
+    - ls -aR
     - source deploy-windows.sh
 env:
   global:
