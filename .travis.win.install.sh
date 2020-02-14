@@ -1,5 +1,7 @@
 #!/usr/bin/env sh
 
+choco install zip
+
 choco install -y r.project &&
 export R_VERSION=`ls 'C:\Program Files\R\'` &&
 export PATH=$PATH:';C:\Program Files\R\'$R_VERSION'\bin\x64' &&
