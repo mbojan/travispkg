@@ -9,8 +9,9 @@ matrix:
   - os: linux
     r: release
     after_success:
-    - test $TRAVIS_PULL_REQUEST == "false" && test $TRAVIS_BRANCH == "master" && bash
-      deploy-linux.sh echo "Done!"
+    - ls
+    - test $TRAVIS_PULL_REQUEST == "false" && test $TRAVIS_BRANCH == "master" && bash deploy-linux.sh
+    - ls
   - os: windows
     language: shell
     before_install:
