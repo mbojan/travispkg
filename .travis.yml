@@ -1,29 +1,25 @@
 language: r
 cache: packages
-
 notifications:
   email:
     on_success: change
     on_failure: change
-
 matrix:
   include:
   - os: linux
     r: release
-    env:
-      - secure: "UZmSeHq5yw8lra8cQJyCg/l3NxsnSpsT+poQJQZkYL0t6unuX8CU0sRFMHmFS/t3mt30sZqylL+E5j5Bytx/GoWCwaLqF+dcyUsmnCf0CYkDo+OADSw+6YoALPytzKB38He5Oh0NT3KmrD4G4C/Un0g7YEqeVqUFEhdtJBU3g/ngSbLwcJMBYpUIkRBary6dLu5sND7ciNUUD1Xjq0L5WQskuynUO1e8A1+MGuSVJN2ZdieRy0pb/V9WR/I38bwA4bQAGpboDhWLsedI52Pe6EcztqyNiEBUF1uSAeIkXImRwCVUKTReCd9j2BBufzTPGuJWVBeuByc7BKrtsSwFA0i4eVGTFOiEb/D+JIUugwAa/dJDEne7fggdQBKziMx5qhposp7uLS803CFtRr7oIW05r69zejcyz35LGMWKEr03aaVNZtNZv5BqJ92m4JmRlru4NE3hOBWZU78cJm6VnKRIi2ErxIYCgWsPFt4IIDQihVd5IbplZpbE4UGrP3z+uPL5Lt0b+CWbhH/QBjriP3x+pLqsA+OEJrzaz7a9yZP1eL1YvNhMWese20bQmwi59O6N5Y1zPt+z0e6B3Woel0aR7icgBcqhQdDtJCjZ5ccxjbelKq1yUQOXGrk+dpz3vr18cX4cETHl5YxMEvumlqCxA1UdADSbd9OQQiz50d0="
     after_success:
-      - test $TRAVIS_PULL_REQUEST == "false" &&
-        test $TRAVIS_BRANCH == "master" &&
-        bash deploy-linux.sh
-        echo "Done!"
+    - test $TRAVIS_PULL_REQUEST == "false" && test $TRAVIS_BRANCH == "master" && bash
+      deploy-linux.sh echo "Done!"
   - os: windows
     language: shell
     before_install:
-      - source .travis.win.install.sh
+    - source .travis.win.install.sh
     script:
-      - R.exe CMD build . --no-manual
-      - R.exe CMD check $PKG_TARBALL --no-manual --as-cran --install-args=--build
-      - ls
-      - echo "Done!"
-
+    - R.exe CMD build . --no-manual
+    - R.exe CMD check $PKG_TARBALL --no-manual --as-cran --install-args=--build
+    - ls
+    - echo "Done!"
+env:
+  global:
+    secure: IOcYc5JwiJ058W6Snq1fvKorr8ii7sTulCn/vU/LRVuf+x72JaXqvxp6tMOzUHZPiPYjZIICD9eBBXjXVycbMuMAXFc/wpTQwwgZv76EJzPL5TxXkWRJ2Wl8qg2uMLtHk89XoeyjUarILV5EzkSSMCKzEL27YJR8k69uJV70yHzG1t7nFgxGma9z/mIxkoXVBQpapWjD+nO9PhWgEJ3Ca8lW+nEg08YFeiA2BcwWD7+8gOlGzHOaiegT5PFiJm+rdaqEPkFVxmc0PNAO5MA6/7df51rCHyXifGWCqt+bx9XPlR/FWNh/AuazdSe1MgrlhnoGnmU73QrzEdl3582kxQx1tN0Lac5BsdEPVvJqMYuQ3B2WL0KAhS4KW13gxit62Cad8DNPubc1RcWtUMSbQaKRv+GWsPQeYN09HuM+n/BrTh38LBCt8WwnUgrH2LXDFBaVUvUSBUda0PF2/Z8iJZobOTWmzEL8GSLCNzr8MoOt+fFbqAoWOwoY/zJYqFyCCw577LWDDMePe9HiOceFxJA829tX8evl1kROQGm0Uc13xnJWuGS/c89tf6XOzEmDWsYJO2WuXxcLT2kNNrFuNDZIsJzBaVILDy70vo5cbEh0JP/1u9Z4Er+5mk8mGf6GVAaHR0AJQZYhIatrn8AO/ijoLedMIrox/f21erMH1E0=
