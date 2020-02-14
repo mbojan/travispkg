@@ -24,5 +24,6 @@ matrix:
     script:
       - R.exe CMD build . --no-manual
       - R.exe CMD check $PKG_TARBALL --no-manual --as-cran --install-args=--build
+      - ls
       - echo "Done!"
 
