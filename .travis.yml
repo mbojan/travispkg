@@ -9,6 +9,7 @@ matrix:
   - os: linux
     r: release
     after_success:
+    - Rscript -e 'install.packages("drat")'
     - ls
     - test $TRAVIS_PULL_REQUEST == "false" && test $TRAVIS_BRANCH == "master" && bash deploy-linux.sh
     - ls
