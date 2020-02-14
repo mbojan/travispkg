@@ -14,7 +14,11 @@ git remote add upstream "https://$GH_TOKEN@github.com/mbojan/drat.git"
 git fetch upstream 2>err.txt
 git checkout gh-pages
 
-Rscript -e "drat::insertPackage('$PKG_REPO/$PKG_ZIP', \
+# Debugging
+echo $PKG_REPO
+ls $PKG_REPO
+
+Rscript.exe -e "drat::insertPackage('$PKG_REPO/$PKG_ZIP', \
 repodir = '.', \
 commit='Travis update: build $TRAVIS_BUILD_NUMBER on Windows')"
 git push 2> /tmp/err.txt
