@@ -1,26 +1,21 @@
 #!/usr/bin/env sh
 PKG_REPO=$PWD
 
-cd ..; mkdir drat; cd drat
+mkdir ../drat
 
 ## Set up Repo parameters
-git init
-git config user.name "Build Pusher"
-git config user.email "michal2992@example.com"
-git config --global push.default simple
+git -C ../drat init
+git -C ../drat config user.name "Build Pusher"
+git -C ../drat config user.email "michal2992@example.com"
+git -C ../drat config --global push.default simple
 
 ## Get drat repo
-git remote add upstream "https://$GH_TOKEN@github.com/mbojan/drat.git"
-git fetch upstream 2>err.txt
-git checkout gh-pages
+git -C ../drat remote add upstream "https://$GH_TOKEN@github.com/mbojan/drat.git"
+git -C ../drat fetch upstream 2>err.txt
+git -C ../drat checkout gh-pages
 
-# Debugging
-echo $PKG_REPO
-ls $PKG_REPO
-
-Rscript.exe -e "cat('$PKG_REPO')"  -e "list.files('$PKG_REPO')" -e "file.exists('$PKG_REPO/$PKG_ZIP')"
-# Rscript.exe -e "drat::insertPackage('$PKG_REPO/$PKG_ZIP', \
-# repodir = '.', \
-# commit='Travis update: build $TRAVIS_BUILD_NUMBER on Windows')"
+Rscript.exe -e "drat::insertPackage('$PKG_REPO/$PKG_ZIP', \
+repodir = '../drat', \
+commit='Travis update: build $TRAVIS_BUILD_NUMBER on Windows')"
 git push 2> /tmp/err.txt
 
