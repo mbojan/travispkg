@@ -18,8 +18,9 @@ git checkout gh-pages
 echo $PKG_REPO
 ls $PKG_REPO
 
-Rscript.exe -e "drat::insertPackage('$PKG_REPO/$PKG_ZIP', \
-repodir = '.', \
-commit='Travis update: build $TRAVIS_BUILD_NUMBER on Windows')"
+Rscript.exe -e "list.files('$PKG_REPO')" -e "file.exists('$PKG_REPO/$PKG_ZIP')"
+# Rscript.exe -e "drat::insertPackage('$PKG_REPO/$PKG_ZIP', \
+# repodir = '.', \
+# commit='Travis update: build $TRAVIS_BUILD_NUMBER on Windows')"
 git push 2> /tmp/err.txt
 
