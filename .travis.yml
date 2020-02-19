@@ -35,7 +35,7 @@ jobs:
     script: test $TRAVIS_BRANCH == "master" &&
       test $TRAVIS_PULL_REQUEST == "false" &&
       R CMD build --no-manual . &&
-      Rscript.exe -e 'install.packages("drat")' &&
+      Rscript -e 'install.packages("drat")' &&
       bash .travis/deploy-drat.sh $PKG_TARBALL
 env:
   global:
