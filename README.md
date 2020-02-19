@@ -2,6 +2,7 @@
 # travispkg
 
 <!-- badges: start -->
+[![Travis build status](https://travis-ci.org/mbojan/travispkg.svg?branch=master)](https://travis-ci.org/mbojan/travispkg)
 <!-- badges: end -->
 
 This is a proof-of-concept dummy R package that aims to use TravisCI to:
