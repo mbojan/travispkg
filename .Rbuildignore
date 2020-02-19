@@ -1,7 +1,5 @@
 ^.*\.Rproj$
 ^\.Rproj\.user$
 ^\.travis\.yml$
-^deploy-linux\.sh$
-^deploy-windows\.sh$
-^\.travis\.win\.install\.sh$
+^\.travis$
 
