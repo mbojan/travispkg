@@ -5,17 +5,26 @@ notifications:
     on_failure: change
 jobs:
   include:
-  - os: windows
-    name: R-release on Windows shell
+  - stage: test
+    os: windows
+    name: Test against R-release on Windows
     language: shell
     before_install:
     - source .travis/travis-win-install.sh
     script:
-    - echo "PATH=$PATH"
     - R.exe CMD build . --no-manual
-    after_success:
-    - test $TRAVIS_BRANCH == "master" &&
+    - R.exe CMD check --no-manual --as-cran $PKG_TARBALL
+  - os: linux
+    r: release
+  - stage: deploy
+    os: windows
+    name: Deploy windows binary to drat
+    language: shell
+    before_install:
+    - source .travis/travis-win-install.sh
+    script: test $TRAVIS_BRANCH == "master" &&
       test $TRAVIS_PULL_REQUEST == "false" &&
+      R.exe CMD build . --no-manual &&
       R.exe CMD INSTALL --build $PKG_TARBALL  &&
       Rscript.exe -e 'install.packages("drat")' &&
       bash .travis/deploy-drat.sh $PKG_ZIP
