@@ -29,8 +29,10 @@ To that end the `.travis.yml` runs script files kept in `.travis` folder.
 Built packages are pushed to drat repository at <https://mbojan.github.io/drat> and can be inspected with
 
 ```{r}
-available.packages(repos="https://mbojan.github.io/drat")
-available.packages(repos="https://mbojan.github.io/drat", type="win.binary")
+a_src <- available.packages(repos="https://mbojan.github.io/drat")
+"travispkg" %in% rownames(a_src)
+a_winbin <- available.packages(repos="https://mbojan.github.io/drat", type="win.binary")
+"travispkg" %in% rownames(a_winbin)
 ```
 
 and installed with by using [drat](dirk.eddelbuettel.com/code/drat.html) facilities as described [here](http://eddelbuettel.github.io/drat/DratForPackageUsers.html):
