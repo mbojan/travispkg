@@ -11,6 +11,7 @@ jobs:
     language: shell
     before_install:
     - source .travis/travis-win-install.sh
+    - source .travis/envars.sh
     script:
     - R.exe CMD build . --no-manual
     - R.exe CMD check --no-manual --as-cran $PKG_TARBALL
@@ -23,6 +24,7 @@ jobs:
     language: shell
     before_install:
     - source .travis/travis-win-install.sh
+    - source .travis/envars.sh
     script: test $TRAVIS_BRANCH == "master" &&
       test $TRAVIS_PULL_REQUEST == "false" &&
       R.exe CMD build . --no-manual &&
@@ -32,7 +34,9 @@ jobs:
   - os: linux
     name: Deploy tarball to drat
     language: r
-    script: test $TRAVIS_BRANCH == "master" &&
+    script:
+    - source .travis/envars.sh
+    - test $TRAVIS_BRANCH == "master" &&
       test $TRAVIS_PULL_REQUEST == "false" &&
       R CMD build --no-manual . &&
       Rscript -e 'install.packages("drat")' &&

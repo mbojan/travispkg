@@ -1,0 +1,5 @@
+export PKG_NAME="$(perl -ne '$package = $1 if (/^Package:\s*(\S+)/); END { print "${package}" }' DESCRIPTION)"
+export PKG_VERSION="$(perl -ne '$version = $1 if (/^Version:\s*(\S+)/); END { print "${version}" }' DESCRIPTION)"
+export PKG_TARBALL="$(perl -ne '$version = $1 if (/^Version:\s(\S+)/); $package = $1 if (/^Package:\s*(\S+)/); END { print "${package}_$version.tar.gz" }' DESCRIPTION)"
+export PKG_ZIP="$(perl -ne '$version = $1 if (/^Version:\s(\S+)/); $package = $1 if (/^Package:\s*(\S+)/); END { print "${package}_$version.zip" }' DESCRIPTION)"
+export PKG_TGZ="$(perl -ne '$version = $1 if (/^Version:\s(\S+)/); $package = $1 if (/^Package:\s*(\S+)/); END { print "${package}_$version.tgz" }' DESCRIPTION)"
