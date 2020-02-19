@@ -7,7 +7,7 @@
 fun(x)
 }
 \arguments{
-\item{an}{argument}
+\item{x}{an argument}
 }
 \value{
 Argument is returned as is.

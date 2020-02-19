@@ -1,6 +1,6 @@
 #' A dummy R function
 #'
-#' @param an argument
+#' @param x an argument
 #'
 #' @return Argument is returned as is.
 #'
