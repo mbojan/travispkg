@@ -16,4 +16,4 @@ Rscript.exe -e 'sessionInfo()' &&
 Rscript.exe -e 'install.packages("devtools", dependencies = TRUE);if (!all("devtools" %in% installed.packages())) { q(status = 1, save = "no")}' &&
 Rscript.exe -e 'deps <- devtools::dev_package_deps(dependencies = TRUE); inst <- installed.packages(); install.packages(deps$package[!deps$package %in% inst[,"Package"]])' &&
 Rscript.exe -e 'install.packages("zeallot", dependencies = TRUE)' &&
-Rscript.exe -e 'devtools::session_info(installed.packages()[, "Package"])' &&
+Rscript.exe -e 'devtools::session_info(installed.packages()[, "Package"])'
