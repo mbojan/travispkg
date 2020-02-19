@@ -14,9 +14,11 @@ jobs:
     - echo "PATH=$PATH"
     - R.exe CMD build . --no-manual
     after_success:
-    - test $TRAVIS_BRANCH == "ci" && test $TRAVIS_PULL_REQUEST == "false" && R.exe
-      CMD INSTALL --build $PKG_TARBALL  && Rscript.exe -e 'install.packages("drat")'
-      && bash .travis/deploy-drat.sh $PKG_ZIP
+    - test $TRAVIS_BRANCH == "master" &&
+      test $TRAVIS_PULL_REQUEST == "false" &&
+      R.exe CMD INSTALL --build $PKG_TARBALL  &&
+      Rscript.exe -e 'install.packages("drat")' &&
+      bash .travis/deploy-drat.sh $PKG_ZIP
 env:
   global:
     secure: cL+GbQND3r610mTQNNQeBqhXUO4QremLw/kZ7BSykepFf/t8Phy8/ZNLSrR0u3P+sb5AYKOt9bR+JX8CtJPxdKVuI7+K7fmPITeOk5OQyGHNK+huHIy5CpKJM1XhbipK/6RLgmLX34YHjWTmsBBDnXZMhWThEEmBHA28FKHUcc0yzDsSFl1j5DkoKqMV14zRVvvV1Ax2QK7Az77g2I+TpX9APhWbIEW6vAaom5F9MhSYw+lesOnsoJW5lT8HVtSrtxXFinb/22hKqSnhS6ObszyetDAUoQipZ5eEr199gOZmIeTGDVdUrXcBtGrafW4P9z8rUoL5VtKPKk89mCIkHn6DVfuOkyn33scQg9EPo+lZweWIPlvjtFsAbltjwRgJkoxZzi7N0J4/Xu2cvBlGdq4YkC6SXAwOC0JStW9cVCIGRw+V++MF2J02dpp7HzrF2rJvnGlWH2LL620U4GtihUi2zQ66XgeLl7wsGQNPErdr0ETFgJG6SWvjjc5Vm4UbumltqFh+Ek6s1wwde6lmUj5i31BF9j98mHxailnqHRI/Fz+S+aDhXSPFz6SbdhBiIu60v9WAezD7ZpLxqCgMCVMvlOoeiiU72MlzcOKBaj7aA5fjxxIMFG0ecbDXtFsSx1pwtE0NKHOM36DiVacrd1Qt+aDbi4Dy5ZCE8EUZQ3Q=
