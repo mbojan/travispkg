@@ -27,6 +27,6 @@ echo "PKG_NAME=$PKG_NAME"
 echo "PKG_VERSION=$PKG_VERSION"
 echo "PKG_ZIP=$PKG_ZIP"
 
-Rscript.exe -e "drat::insertPackage('$PKG', repodir = '$DRAT', commit='Travis update: build $TRAVIS_BUILD_NUMBER of $PKG_NAME: $PKG')"
+Rscript -e "drat::insertPackage('$PKG', repodir = '$DRAT', commit='Travis update: build $TRAVIS_BUILD_NUMBER of $PKG_NAME: $PKG')"
 git -C $DRAT push 2>err.txt
 
